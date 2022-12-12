@@ -24,7 +24,7 @@ fn main() {
     // 3
     // 4
     // Would be parsed to: [3, 7]
-    let parsed_elv_list: Vec<i32> = contents
+    let mut parsed_elv_list: Vec<i32> = contents
         .trim()
         .split("\n\n")
         .map(
@@ -48,4 +48,9 @@ fn main() {
     
     println!("Index of Elv: {}", index_of_elf_with_max_calories);
     println!("Max Calories: {}", parsed_elv_list[index_of_elf_with_max_calories]);
+
+    // Second part: Find the 3 max calories and sum them up
+    parsed_elv_list.sort_unstable();
+    let result_max_3: i32 = parsed_elv_list.into_iter().rev().take(3).sum();
+    println!("3 Max Calories: {}", result_max_3);
 }
